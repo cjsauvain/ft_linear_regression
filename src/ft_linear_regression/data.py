@@ -5,7 +5,7 @@ import pandas as pd
 
 def retrieve_thetas() -> tuple[float, float]:
     try:
-        with open("thetas.json", "r") as file:
+        with open("data/thetas.json", "r") as file:
             data = json.load(file)
 
             return float(data["theta0"]), float(data["theta1"])
@@ -17,7 +17,7 @@ def retrieve_thetas() -> tuple[float, float]:
 
 
 def retrieve_min_max() -> tuple[int, int, int, int]:
-    with open("min_max.json", "r") as file:
+    with open("data/min_max.json", "r") as file:
         data = json.load(file)
 
         if type(data["km_min"]) is not int \
@@ -36,7 +36,7 @@ def retrieve_min_max() -> tuple[int, int, int, int]:
 def write_thetas_to_json_file(theta0: float, theta1: float):
     json_content: dict[str, float] = {"theta0": theta0, "theta1": theta1}
 
-    with open("thetas.json", "w") as file:
+    with open("data/thetas.json", "w") as file:
         json.dump(json_content, file, indent=4)
 
 
@@ -51,7 +51,7 @@ def write_min_max_to_json_file(
         "price_max": price_max
     }
 
-    with open("min_max.json", "w") as file:
+    with open("data/min_max.json", "w") as file:
         json.dump(json_content, file, indent=4)
 
 

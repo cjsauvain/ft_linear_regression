@@ -1,10 +1,6 @@
 import numpy as np
 
 
-def model(mileages: np.ndarray, theta: np.ndarray) -> np.ndarray:
-    return mileages.dot(theta)
-
-
 def cost_function(
         mileages: np.ndarray,
         thetas: np.ndarray,
@@ -19,6 +15,10 @@ def accuracy(prices: np.ndarray, final_model: np.ndarray):
     v = ((prices - prices.mean())**2).sum()
 
     print(f"Model Accuracy: {(1 - u/v) * 100:.2f}%")
+
+
+def model(mileages: np.ndarray, theta: np.ndarray) -> np.ndarray:
+    return mileages.dot(theta)
 
 
 def gradient(
@@ -39,7 +39,7 @@ def train_model(
     tmp_theta = np.zeros((2, 1))
     old_cost = float('inf')
     cost = cost_function(normalized_mileages, tmp_theta, normalized_prices)
-    epsilon = 1e-6
+    epsilon = 1e-9
     iterations = 0
     max_iter = 100000
     cost_history = []
