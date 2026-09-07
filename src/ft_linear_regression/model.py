@@ -10,13 +10,6 @@ def cost_function(
     return (1/(2 * m)) * np.sum((model(mileages, thetas) - price)**2)
 
 
-def accuracy(prices: np.ndarray, final_model: np.ndarray):
-    u = ((prices - final_model)**2).sum()
-    v = ((prices - prices.mean())**2).sum()
-
-    print(f"Model Accuracy: {(1 - u/v) * 100:.2f}%")
-
-
 def model(mileages: np.ndarray, theta: np.ndarray) -> np.ndarray:
     return mileages.dot(theta)
 
@@ -34,7 +27,7 @@ def train_model(
         normalized_mileages: np.ndarray,
         normalized_prices: np.ndarray,
         learning_rate: float
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, list]:
 
     tmp_theta = np.zeros((2, 1))
     old_cost = float('inf')
@@ -54,7 +47,5 @@ def train_model(
         cost_history.append(cost)
 
         iterations += 1
-
-    accuracy(normalized_prices, model(normalized_mileages, tmp_theta))
 
     return tmp_theta, cost_history

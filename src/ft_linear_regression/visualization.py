@@ -1,45 +1,43 @@
 import matplotlib
 import matplotlib.axes
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
-import src.ft_linear_regression.model as model
+from src.ft_linear_regression.model import model
 
 
 def build_dataset_graph(
-        ax: matplotlib.axes.Axes,
-        normalized_mileages: np.ndarray, normalized_prices: np.ndarray
+    ax: matplotlib.axes.Axes,
+    normalized_mileages: np.ndarray,
+    normalized_prices: np.ndarray,
 ):
-    ax.scatter(
-        normalized_mileages[:, 0], normalized_prices,
-        marker='o',
-        c='g'
-    )
+    ax.scatter(normalized_mileages[:, 0], normalized_prices, c="g")
 
 
 def build_final_model_graph(
-        ax: matplotlib.axes.Axes,
-        normalized_mileages: np.ndarray,
-        theta: np.ndarray
+    ax: matplotlib.axes.Axes,
+    normalized_mileages: np.ndarray,
+    theta: np.ndarray
 ):
     ax.plot(
         normalized_mileages[:, 0],
-        model.model(normalized_mileages, theta),
-        c='r'
+        model(normalized_mileages, theta), c="r"
     )
 
 
 def build_cost_history_graph(
         ax: matplotlib.axes.Axes,
-        cost_history: np.ndarray
+        cost_history: list
 ):
     ax.plot(range(len(cost_history)), cost_history)
 
 
 def build_axes_titles_labels_ticks(
-        axes: matplotlib.axes.Axes,
-        km_min: int, km_max: int,
-        price_min: int, price_max: int,
+    axes: matplotlib.axes.Axes,
+    km_min: int,
+    km_max: int,
+    price_min: int,
+    price_max: int,
 ):
     xticks = np.linspace(0, 1, 5)
     xlabels = np.round(np.linspace(km_min, km_max, 5), -3).astype(int)
@@ -59,9 +57,14 @@ def build_axes_titles_labels_ticks(
 
 
 def display_graph(
-        normalized_mileages: np.ndarray, km_min: int, km_max: int,
-        normalized_prices: np.ndarray, price_min: int, price_max: int,
-        cost_history: np.ndarray, theta: np.ndarray
+    normalized_mileages: np.ndarray,
+    km_min: int,
+    km_max: int,
+    normalized_prices: np.ndarray,
+    price_min: int,
+    price_max: int,
+    cost_history: list,
+    theta: np.ndarray,
 ):
     _, axes = plt.subplots(2, 1)
 

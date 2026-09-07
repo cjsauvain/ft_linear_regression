@@ -1,14 +1,15 @@
 import sys
+
 import numpy as np
 
 from src.ft_linear_regression.data import (
-    retrieve_data_from_dataset,
     normalize_data,
+    retrieve_data_from_dataset,
     write_min_max_to_json_file,
-    write_thetas_to_json_file
+    write_thetas_to_json_file,
 )
-from src.ft_linear_regression.visualization import display_graph
 from src.ft_linear_regression.model import train_model
+from src.ft_linear_regression.visualization import display_graph
 
 
 def validate_args() -> tuple[str, float]:

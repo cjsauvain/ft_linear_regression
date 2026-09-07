@@ -1,4 +1,4 @@
-from src.ft_linear_regression.data import retrieve_thetas, retrieve_min_max
+from src.ft_linear_regression.data import retrieve_min_max, retrieve_thetas
 
 
 def estimate():
