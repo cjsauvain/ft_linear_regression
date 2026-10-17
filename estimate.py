@@ -7,14 +7,13 @@ def estimate():
         assert user_input.isdigit(), "You must provide a positive integer"
         user_input = int(user_input)
 
-        theta0, theta1 = retrieve_thetas()
         estimatedPrice = 0
+        theta0, theta1 = retrieve_thetas()
         if theta0 != 0 and theta1 != 0:
             km_min, km_max, price_min, price_max = retrieve_min_max()
             normalized_km = (user_input - km_min) / (km_max - km_min)
             normalized_price = theta0 + theta1 * normalized_km
-            estimatedPrice = \
-                normalized_price * (price_max - price_min) + price_min
+            estimatedPrice = normalized_price * (price_max - price_min) + price_min
         print(estimatedPrice)
 
     except Exception as e:
