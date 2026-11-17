@@ -1,5 +1,7 @@
 # ft_linear_regression
 
+![Model and Learning Curve](images/linear_regression.svg)
+
 Predict a car price from its mileage. The model is a linear regression trained with gradient descent.
 
 Mileage and price are scaled to `[0, 1]`. The prediction is `price = θ0 + θ1 * mileage`, then scaled back to euros. Training stops when the cost barely changes, and saves `data/thetas.json` and `data/min_max.json`.
